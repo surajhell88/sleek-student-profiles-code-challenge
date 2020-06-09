@@ -8,7 +8,19 @@ const api = axios.create({
 })
 
 function getStudentProfiles() {
-    return api.get(STUDENT_PROFILES)
+    return api.get(STUDENT_PROFILES).then(response => {
+        const { students } = response.data
+        const listOfProfiles = students.map(student => {
+            const average = student.grades.reduce((accumulator, grade) => {
+                return accumulator + Number(grade)
+            }, 0) / student.grades.length
+            return {
+                ...student,
+                average,
+            }
+        })
+        return listOfProfiles
+    })
 }
 
 export { getStudentProfiles }

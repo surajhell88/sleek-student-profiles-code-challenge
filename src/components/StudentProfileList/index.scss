@@ -33,6 +33,7 @@
         &-container {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         &-image {
@@ -45,12 +46,22 @@
         }
 
         &-info {
+            flex: 1;
             margin-left: 24px;
 
             & > h4 {
                 font-weight: bolder;
                 text-transform: uppercase;
                 margin-bottom: 12px;
+            }
+        }
+
+        &-action {
+            width: 30px;
+            margin-right: 24px;
+            transition: transform .2s ease-in-out;
+            &.rotate-up {
+                transform: rotate(180deg);
             }
         }
     }

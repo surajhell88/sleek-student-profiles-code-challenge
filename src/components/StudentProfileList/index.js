@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
 import { getStudentProfiles } from '../../utils/api'
+import StudentProfileItem from './StudentProfileItem';
 
 function matchStrings(string1, string2) {
   return string1.toLowerCase().indexOf(string2.toLowerCase()) !== -1;
@@ -25,20 +26,7 @@ function StudentProfileList() {
     }
   }, [searchKey, studentList])
   useEffect(() => { // fetch student profiles once
-    getStudentProfiles().then(response => {
-      const { students } = response.data
-      const listOfProfiles = students.map(student => {
-        const average = student.grades.reduce((accumulator, grade) => {
-          return accumulator + Number(grade)
-        }, 0) / student.grades.length
-        return {
-          ...student,
-          average,
-        }
-      })
-      setStudentList(listOfProfiles)
-      setFilteredList(listOfProfiles)
-    })
+    getStudentProfiles().then(setStudentList)
   }, [])
   return (
     <div className="student-profile">
@@ -51,20 +39,7 @@ function StudentProfileList() {
       />
       <ul className="student-profile-list">
         {filteredList.map(profile => {
-          return <li key={profile.id}>
-            <div className="student-profile-list-container">
-              <div className="student-profile-list-image">
-                <img src={profile.pic} alt={`${profile.firstName} ${profile.lastName}`} />
-              </div>
-              <div className="student-profile-list-info">
-                <h4>{`${profile.firstName} ${profile.lastName}`}</h4>
-                <p>Email: {profile.email}</p>
-                <p>Company: {profile.company}</p>
-                <p>Skill: {profile.skill}</p>
-                <p>Average: {profile.average}%</p>
-              </div>
-            </div>
-          </li>
+          return <StudentProfileItem key={profile.id} profile={profile} />
         })}
       </ul>
     </div>
