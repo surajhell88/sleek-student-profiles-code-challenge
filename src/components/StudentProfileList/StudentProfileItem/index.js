@@ -64,6 +64,7 @@ function StudentProfileItem({ profile, addTagToProfile }) {
                                     onChange={handleChange}
                                     onKeyDown={addTag}
                                     onClick={handleInputClick}
+                                    maxLength="30"
                                 />
                             </div>
                         </div>
