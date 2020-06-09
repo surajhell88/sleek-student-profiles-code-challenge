@@ -1,0 +1,68 @@
+.student-profile-item {
+    padding: 12px;
+
+    &:not(:first-child) {
+        border-top: 1px solid #d3d3d3;
+    }
+
+    &-container {
+        display: flex;
+        cursor: pointer;
+    }
+
+    &-image {
+        width: 150px;
+        & > img {
+            width: 100%;
+            border-radius: 50%;
+            border: 1px solid #d3d3d3;
+        }
+    }
+
+    &-info {
+        flex: 1;
+        margin-left: 24px;
+
+        & > h4 {
+            font-weight: bolder;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        &-grades {
+            margin-top: 24px;
+        }
+    }
+
+    &-action {
+        width: 30px;
+        margin-right: 24px;
+        & > svg {
+            transition: transform .2s ease-in-out;
+            &.rotate-up {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &-tags {
+        &-container {
+            margin-top: 24px;
+        }
+        &-input {
+            clear: both;
+            & > input[type='text'] {
+                width: 50%;
+            }
+        }
+        &-list {
+            &-item {
+                padding: 12px;
+                background-color: #d3d3d3;
+                float: left;
+                margin-top: 6px;
+                margin-right: 6px;
+            }
+        }
+    }
+}

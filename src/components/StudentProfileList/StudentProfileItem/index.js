@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { ReactComponent as DownArrow } from './down-arrow.svg';
+import { ReactComponent as DownArrow } from './down-arrow.svg'
+
+import './index.scss'
 
 function StudentProfileItem({ profile, addTagToProfile }) {
     const [showGrades, setShowGrades] = useState(false)
@@ -14,17 +16,17 @@ function StudentProfileItem({ profile, addTagToProfile }) {
         setTagInput(e.target.value)
     }
     function addTag(e) { // add tag on enter key
-        if (e.keyCode === 13) { // check for enter key
+        if (e.keyCode === 13 && tagInput) { // check for enter key
             addTagToProfile(profile.id, tagInput)
             setTagInput('') // reset input value
         }
     }
-    return <li>
-        <div className="student-profile-list-container" onClick={toggleShowGrades}>
-            <div className="student-profile-list-image">
+    return <li className="student-profile-item">
+        <div className="student-profile-item-container" onClick={toggleShowGrades}>
+            <div className="student-profile-item-image">
                 <img src={profile.pic} alt={`${profile.firstName} ${profile.lastName}`} />
             </div>
-            <div className="student-profile-list-info">
+            <div className="student-profile-item-info">
                 <h4>{`${profile.firstName} ${profile.lastName}`}</h4>
                 <p>Email: {profile.email}</p>
                 <p>Company: {profile.company}</p>
@@ -33,7 +35,7 @@ function StudentProfileItem({ profile, addTagToProfile }) {
                 {
                     showGrades &&
                     <div>
-                        <table className="student-profile-list-info-grades">
+                        <table className="student-profile-item-info-grades">
                             <tbody>
                                 {profile.grades.map((grade, i) => {
                                     return <tr key={i}>
@@ -43,18 +45,18 @@ function StudentProfileItem({ profile, addTagToProfile }) {
                                 })}
                             </tbody>
                         </table>
-                        <div className="student-profile-list-tags-container">
-                            <ul className="student-profile-list-tags-list">
+                        <div className="student-profile-item-tags-container">
+                            <div className="student-profile-item-tags-list">
                                 {
                                     profile.tags &&
                                     profile.tags.map((tag, i) => {
-                                        return <li className="student-profile-list-tags-list-item" key={i}>
+                                        return <div className="student-profile-item-tags-list-item" key={i}>
                                             {tag}
-                                        </li>
+                                        </div>
                                     })
                                 }
-                            </ul>
-                            <div className="student-profile-list-tags-input">
+                            </div>
+                            <div className="student-profile-item-tags-input">
                                 <input
                                     type="text"
                                     placeholder="Add a Tag"
@@ -68,7 +70,7 @@ function StudentProfileItem({ profile, addTagToProfile }) {
                     </div>
                 }
             </div>
-            <div className="student-profile-list-action">
+            <div className="student-profile-item-action">
                 <DownArrow className={`${showGrades && 'rotate-up'}`} />
             </div>
         </div>

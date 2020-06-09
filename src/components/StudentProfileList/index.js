@@ -51,7 +51,6 @@ function StudentProfileList() {
   return (
     <div className="student-profile">
       <input
-        className="student-profile-search"
         type="text"
         value={searchKey}
         onChange={handleChange}
