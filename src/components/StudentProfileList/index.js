@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
-import { getStudentProfiles } from '../../utils/api'
-import StudentProfileItem from '../StudentProfileItem'
-import { filter } from '../../utils/filter'
+import { api, filter } from 'utils'
+import { StudentProfileItem } from 'components'
 
 function StudentProfileList() {
   const [searchKey, setSearchKey] = useState('')
@@ -34,7 +33,7 @@ function StudentProfileList() {
     }
   }, [searchKey, studentList])
   useEffect(() => { // fetch student profiles once
-    getStudentProfiles().then(setStudentList)
+    api.getStudentProfiles().then(setStudentList)
   }, [])
   return (
     <div className="student-profile">

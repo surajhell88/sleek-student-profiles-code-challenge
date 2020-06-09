@@ -25,4 +25,4 @@ function getStudentProfiles() {
     })
 }
 
-export { getStudentProfiles }
+export default { getStudentProfiles }

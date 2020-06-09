@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { ReactComponent as DownArrow } from './down-arrow.svg'
+import { TagManager } from 'components'
 
 import './index.scss'
-import TagManager from '../TagManager'
 
 function StudentProfileItem({ profile, addTagToProfile }) {
     const [showGrades, setShowGrades] = useState(false)

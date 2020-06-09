@@ -16,7 +16,4 @@ function filter(listOfData, arrOfKeys, searchKey, matchClause = 'OR') {
     })
 }
 
-export {
-    matchStrings,
-    filter
-}
+export default filter
