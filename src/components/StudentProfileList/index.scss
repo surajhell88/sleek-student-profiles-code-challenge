@@ -1,0 +1,7 @@
+.student-profile-list {
+    list-style: none;
+
+    & > li:not(:first-child) {
+        margin-top: 12px;
+    }
+}

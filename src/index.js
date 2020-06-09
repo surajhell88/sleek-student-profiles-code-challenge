@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
+import { StudentProfileList } from './components'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StudentProfileList />
   </React.StrictMode>,
   document.getElementById('root')
 )
