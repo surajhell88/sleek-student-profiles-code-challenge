@@ -2,24 +2,12 @@ import React, { useState } from 'react'
 import { ReactComponent as DownArrow } from './down-arrow.svg'
 
 import './index.scss'
+import TagManager from '../TagManager'
 
 function StudentProfileItem({ profile, addTagToProfile }) {
     const [showGrades, setShowGrades] = useState(false)
-    const [tagInput, setTagInput] = useState('')
     function toggleShowGrades() {
         setShowGrades(!showGrades)
-    }
-    function handleInputClick(e) {
-        e.stopPropagation(); // stop click event to propagate to parent which toggles the grades info
-    }
-    function handleChange(e) {
-        setTagInput(e.target.value)
-    }
-    function addTag(e) { // add tag on enter key
-        if (e.keyCode === 13 && tagInput) { // check for enter key
-            addTagToProfile(profile.id, tagInput)
-            setTagInput('') // reset input value
-        }
     }
     return <li className="student-profile-item">
         <div className="student-profile-item-container" onClick={toggleShowGrades}>
@@ -45,29 +33,12 @@ function StudentProfileItem({ profile, addTagToProfile }) {
                                 })}
                             </tbody>
                         </table>
-                        <div className="student-profile-item-tags-container">
-                            <div className="student-profile-item-tags-list">
-                                {
-                                    profile.tags &&
-                                    profile.tags.map((tag, i) => {
-                                        return <div className="student-profile-item-tags-list-item" key={i}>
-                                            {tag}
-                                        </div>
-                                    })
-                                }
-                            </div>
-                            <div className="student-profile-item-tags-input">
-                                <input
-                                    type="text"
-                                    placeholder="Add a Tag"
-                                    value={tagInput}
-                                    onChange={handleChange}
-                                    onKeyDown={addTag}
-                                    onClick={handleInputClick}
-                                    maxLength="30"
-                                />
-                            </div>
-                        </div>
+                        <TagManager
+                            tagList={profile.tags}
+                            createNewTag={
+                                (newTag) => addTagToProfile(profile.id, newTag)
+                            }
+                        />
                     </div>
                 }
             </div>

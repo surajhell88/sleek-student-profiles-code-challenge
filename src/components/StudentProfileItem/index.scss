@@ -48,29 +48,4 @@
             }
         }
     }
-
-    &-tags {
-        &-container {
-            margin-top: 24px;
-        }
-        &-input {
-            clear: both;
-            & > input[type='text'] {
-                width: 50%;
-            }
-        }
-        &-list {
-            &-item {
-                padding: 12px;
-                background-color: #d3d3d3;
-                float: left;
-                margin-bottom: 6px;
-                margin-right: 6px;
-                max-width: 90px;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-        }
-    }
 }

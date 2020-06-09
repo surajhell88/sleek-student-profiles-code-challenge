@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
 import { getStudentProfiles } from '../../utils/api'
-import StudentProfileItem from './StudentProfileItem'
+import StudentProfileItem from '../StudentProfileItem'
 import { filter } from '../../utils/filter'
 
 function StudentProfileList() {
