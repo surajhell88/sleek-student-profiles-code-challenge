@@ -1,5 +1,4 @@
-.student-profile-list {
-    list-style: none;
+.student-profile {
     margin: 0 auto;
     margin-top: 48px;
     margin-bottom: 48px;
@@ -7,35 +6,52 @@
     max-width: 720px;
     border-radius: 12px;
 
-    & > li {
+    &-search {
+        width: 100%;
+        box-sizing: border-box;
+        border: 0px;
+        border-bottom: 1px solid #d3d3d3;
         padding: 12px;
-    }
-
-    & > li:not(:first-child) {
-        border-top: 1px solid grey;
-    }
-
-    &-container {
-        display: flex;
-        align-items: center;
-    }
-
-    &-image {
-        width: 150px;
-        & > img {
-            width: 100%;
-            border-radius: 50%;
-            border: 1px solid #d3d3d3;
+        font-size: 16px;
+        &:focus {
+            outline: none;
+            border-bottom: 1px solid #131313;
         }
     }
 
-    &-info {
-        margin-left: 24px;
+    &-list {
+        list-style: none;
 
-        & > h4 {
-            font-weight: bolder;
-            text-transform: uppercase;
-            margin-bottom: 12px;
+        & > li {
+            padding: 12px;
+        }
+
+        & > li:not(:first-child) {
+            border-top: 1px solid #d3d3d3;
+        }
+
+        &-container {
+            display: flex;
+            align-items: center;
+        }
+
+        &-image {
+            width: 150px;
+            & > img {
+                width: 100%;
+                border-radius: 50%;
+                border: 1px solid #d3d3d3;
+            }
+        }
+
+        &-info {
+            margin-left: 24px;
+
+            & > h4 {
+                font-weight: bolder;
+                text-transform: uppercase;
+                margin-bottom: 12px;
+            }
         }
     }
 }
