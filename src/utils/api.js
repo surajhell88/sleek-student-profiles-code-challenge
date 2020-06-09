@@ -16,6 +16,7 @@ function getStudentProfiles() {
             }, 0) / student.grades.length
             return {
                 ...student,
+                tags: [],
                 average,
             }
         })

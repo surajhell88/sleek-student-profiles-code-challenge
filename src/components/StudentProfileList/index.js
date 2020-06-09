@@ -14,11 +14,31 @@ function StudentProfileList() {
   function handleChange(e) {
     setSearchKey(e.target.value)
   }
+  function addTagToProfile(profileId, tagName) {
+    const newStudentList = studentList.map(student => {
+      let tags = student.tags;
+      if (student.id === profileId && tags.indexOf(tagName) === -1) {
+        tags.push(tagName.toLowerCase())
+      }
+      return {
+        ...student,
+        tags
+      }
+    });
+    setStudentList(newStudentList)
+  }
   useEffect(() => { // filter by search input value
+    function matchName(student) {
+      const { firstName, lastName } = student
+      return matchStrings(firstName, searchKey) || matchStrings(lastName, searchKey)
+    }
+    function matchTags(student) {
+      const { tags } = student
+      return tags.join(',').indexOf(searchKey.toLowerCase()) !== -1;
+    }
     if (searchKey) {
       const filteredList = studentList.filter(student => {
-        const { firstName, lastName } = student
-        return matchStrings(firstName, searchKey) || matchStrings(lastName, searchKey)
+        return matchName(student) || matchTags(student)
       })
       setFilteredList(filteredList)
     } else {
@@ -39,7 +59,11 @@ function StudentProfileList() {
       />
       <ul className="student-profile-list">
         {filteredList.map(profile => {
-          return <StudentProfileItem key={profile.id} profile={profile} />
+          return <StudentProfileItem
+            key={profile.id}
+            profile={profile}
+            addTagToProfile={addTagToProfile}
+          />
         })}
       </ul>
     </div>
