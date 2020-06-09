@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+
 import { ReactComponent as DownArrow } from './down-arrow.svg'
 import { TagManager } from 'components'
 
@@ -47,6 +49,23 @@ function StudentProfileItem({ profile, addTagToProfile }) {
             </div>
         </div>
     </li>
+}
+
+StudentProfileItem.propTypes = {
+    profile: PropTypes.shape({
+        firstName: PropTypes.string,
+        lastName: PropTypes.string,
+        skill: PropTypes.string,
+        city: PropTypes.string,
+        pic: PropTypes.string,
+        email: PropTypes.string,
+        grades: PropTypes.arrayOf(PropTypes.string),
+        id: PropTypes.string,
+        company: PropTypes.string,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        tagString: PropTypes.string
+    }),
+    addTagToProfile: PropTypes.func
 }
 
 export default StudentProfileItem

@@ -10,8 +10,12 @@ The application does following
 
 Explaining application code wise,
 1. The application fetches data once at start and calculates average to store it in main data store
-2. The tags are saved in memory, so refreshing the app deletes that data, maybe we could add it in localstorage and fetch it in subsequent refresh, add it according to profile ids'
+2. The tags are saved in memory, so refreshing the app deletes that data
 3. The search filter is made using OR condition between firstName, lastName and tags, it can quickly be converted to AND.
+
+Enhancements,
+1. Storing tag data in localStorage, which will be saved when user adds it.
+2. Adding unit tests for each component for better code coverage
 
 ## Available Scripts
 

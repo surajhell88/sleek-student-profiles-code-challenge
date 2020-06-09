@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import './index.scss'
 
@@ -39,6 +40,11 @@ function TagManager({ tagList, createNewTag }) {
             />
         </div>
     </div>
+}
+
+TagManager.propTypes = {
+    tagList: PropTypes.arrayOf(PropTypes.string),
+    createNewTag: PropTypes.func
 }
 
 export default TagManager
