@@ -1,7 +1,41 @@
 .student-profile-list {
     list-style: none;
+    margin: 0 auto;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    background-color: white;
+    max-width: 720px;
+    border-radius: 12px;
+
+    & > li {
+        padding: 12px;
+    }
 
     & > li:not(:first-child) {
-        margin-top: 12px;
+        border-top: 1px solid grey;
+    }
+
+    &-container {
+        display: flex;
+        align-items: center;
+    }
+
+    &-image {
+        width: 150px;
+        & > img {
+            width: 100%;
+            border-radius: 50%;
+            border: 1px solid #d3d3d3;
+        }
+    }
+
+    &-info {
+        margin-left: 24px;
+
+        & > h4 {
+            font-weight: bolder;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
     }
 }
