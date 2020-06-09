@@ -23,6 +23,10 @@
         flex: 1;
         margin-left: 24px;
 
+        & > p {
+            margin-top: 6px;
+        }
+
         & > h4 {
             font-weight: bolder;
             text-transform: uppercase;

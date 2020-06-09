@@ -28,7 +28,7 @@ function StudentProfileItem({ profile, addTagToProfile }) {
             </div>
             <div className="student-profile-item-info">
                 <h4>{`${profile.firstName} ${profile.lastName}`}</h4>
-                <p>Email: {profile.email}</p>
+                <p>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></p>
                 <p>Company: {profile.company}</p>
                 <p>Skill: {profile.skill}</p>
                 <p>Average: {profile.average}%</p>

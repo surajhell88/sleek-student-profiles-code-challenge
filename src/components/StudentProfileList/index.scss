@@ -7,6 +7,11 @@
     border-radius: 12px;
     user-select: none;
 
+    & > input {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
     &-list {
         list-style: none;
         overflow: scroll;
