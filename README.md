@@ -7,6 +7,7 @@ The application fetches student profiles from API - https://www.hatchways.io/api
 ![List-Of-Student-Profiles](screenshots/List.png)
 2. User can filter profiles based on name as well as tags
 ![Filter-By-Name](screenshots/Search-By-Name.png)
+![Filter-By-Name](screenshots/Search-By-Tags.png)
 3. User can also click on a single student profile to see test scores and the tags
 ![Profile-Details](screenshots/List-Details-Open.png)
 4. User can also add multiple tags to the student profile
