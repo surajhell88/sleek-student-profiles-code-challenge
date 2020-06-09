@@ -32,6 +32,10 @@ The application fetches student profiles from API - https://www.hatchways.io/api
 
 In the project directory, you can run:
 
+### `yarn` OR `yarn install`
+
+To install all dependencies before executing any of the following scripts
+
 ### `yarn start`
 
 Runs the app in the development mode.<br />
