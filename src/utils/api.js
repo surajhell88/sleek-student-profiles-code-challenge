@@ -17,6 +17,7 @@ function getStudentProfiles() {
             return {
                 ...student,
                 tags: [],
+                tagString: '',
                 average,
             }
         })

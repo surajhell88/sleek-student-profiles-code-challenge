@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
 import { getStudentProfiles } from '../../utils/api'
-import StudentProfileItem from './StudentProfileItem';
-
-function matchStrings(string1, string2) {
-  return string1.toLowerCase().indexOf(string2.toLowerCase()) !== -1;
-}
+import StudentProfileItem from './StudentProfileItem'
+import { filter } from '../../utils/filter'
 
 function StudentProfileList() {
   const [searchKey, setSearchKey] = useState('')
@@ -16,30 +13,21 @@ function StudentProfileList() {
   }
   function addTagToProfile(profileId, tagName) {
     const newStudentList = studentList.map(student => {
-      let tags = student.tags;
+      let tags = student.tags
       if (student.id === profileId && tags.indexOf(tagName) === -1) {
         tags.push(tagName.toLowerCase())
       }
       return {
         ...student,
-        tags
+        tags,
+        tagString: tags.join(',')
       }
-    });
+    })
     setStudentList(newStudentList)
   }
   useEffect(() => { // filter by search input value
-    function matchName(student) {
-      const { firstName, lastName } = student
-      return matchStrings(firstName, searchKey) || matchStrings(lastName, searchKey)
-    }
-    function matchTags(student) {
-      const { tags } = student
-      return tags.join(',').indexOf(searchKey.toLowerCase()) !== -1;
-    }
     if (searchKey) {
-      const filteredList = studentList.filter(student => {
-        return matchName(student) || matchTags(student)
-      })
+      const filteredList = filter(studentList, ['firstName', 'lastName', 'tagString'], searchKey)
       setFilteredList(filteredList)
     } else {
       setFilteredList(studentList)
@@ -66,7 +54,7 @@ function StudentProfileList() {
         })}
       </ul>
     </div>
-  );
+  )
 }
 
 export default StudentProfileList
