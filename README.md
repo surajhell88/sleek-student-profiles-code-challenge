@@ -14,7 +14,7 @@ Explaining application code wise,
 3. The search filter is made using OR condition between firstName, lastName and tags, it can quickly be converted to AND.
 
 Enhancements,
-1. Storing tag data in localStorage, which will be saved when user adds it.
+1. Storing tag data in localStorage, which will be saved when user adds it. So it could be fetched on subsequent refreshes and shown to the user.
 2. Adding unit tests for each component for better code coverage
 
 ## Available Scripts
