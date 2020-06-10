@@ -38,9 +38,11 @@ function StudentProfileList() {
   useEffect(() => { // fetch student profiles once
     api.getStudentProfiles().then(listOfProfiles => {
       setStudentList(listOfProfiles)
-      setIsFetching(false)
     }).catch(() => {
       setHasErrorFetching(true)
+    }).then(() => {
+      // always executes
+      setIsFetching(false)
     })
   }, [])
   if (hasErrorFetching) {
