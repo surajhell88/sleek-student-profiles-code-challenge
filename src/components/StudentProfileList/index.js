@@ -7,6 +7,8 @@ function StudentProfileList() {
   const [searchKey, setSearchKey] = useState('')
   const [studentList, setStudentList] = useState([])
   const [filteredList, setFilteredList] = useState([])
+  const [isFetching, setIsFetching] = useState(true)
+  const [hasErrorFetching, setHasErrorFetching] = useState(false)
   function handleChange(e) {
     setSearchKey(e.target.value)
   }
@@ -34,8 +36,19 @@ function StudentProfileList() {
     }
   }, [searchKey, studentList])
   useEffect(() => { // fetch student profiles once
-    api.getStudentProfiles().then(setStudentList)
+    api.getStudentProfiles().then(listOfProfiles => {
+      setStudentList(listOfProfiles)
+      setIsFetching(false)
+    }).catch(() => {
+      setHasErrorFetching(true)
+    })
   }, [])
+  if (hasErrorFetching) {
+    return <h3 className="student-profile-alerts">Error fetching profiles</h3>
+  }
+  if (isFetching) {
+    return <h3 className="student-profile-alerts">Fetching Profiles...</h3>
+  }
   return (
     <div className="student-profile">
       <input
