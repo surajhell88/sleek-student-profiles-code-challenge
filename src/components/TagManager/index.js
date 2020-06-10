@@ -12,7 +12,7 @@ function TagManager({ tagList, createNewTag }) {
         setTagInput(e.target.value)
     }
     function addTag(e) { // add tag on enter key
-        if (e.keyCode === 13 && tagInput) { // check for enter key
+        if (e.keyCode === 13 && tagInput.trim()) { // check for enter key
             createNewTag(tagInput)
             setTagInput('') // reset input value
         }

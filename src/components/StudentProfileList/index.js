@@ -25,8 +25,9 @@ function StudentProfileList() {
     setStudentList(newStudentList)
   }
   useEffect(() => { // filter by search input value
-    if (searchKey) {
-      const filteredList = filter(studentList, ['firstName', 'lastName', 'tagString'], searchKey)
+    const trimmedSearchKey = searchKey.trim()
+    if (trimmedSearchKey) {
+      const filteredList = filter(studentList, ['firstName', 'lastName', 'tagString'], trimmedSearchKey)
       setFilteredList(filteredList)
     } else {
       setFilteredList(studentList)
